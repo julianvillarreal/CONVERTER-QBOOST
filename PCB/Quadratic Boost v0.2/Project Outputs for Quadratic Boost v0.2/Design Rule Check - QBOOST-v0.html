@@ -1,0 +1,430 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD19\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">12/08/2020</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">9:04:57 p. m.</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:00</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc" class="file"><acronym title="C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc">C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">34</td></tr>
+</table>
+</td>
+</table><a name="IDPHQ4GUS1D35TD5UF2UMLBUCTRMVBBFM13JWZKFLMD5YGL0BWCCWN"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDERSMXB5VUK4VJ5UZ0YHP50OIJGB3L3XJJSU5WEK5B0YRB0TQ5LOF">Clearance Constraint (Gap=0.5mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID0ZZPJNIKAKUJJF3W44QBOVT4RCAS04AVSBRB1EE25UCUT2XEAXON">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDX23IK1VGYAH4HL4EARSIHRMZVH2OS1FT4JVXSZFUCGVND2XXV5YF">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDEDDHDM2DCH2IPQO0E1MQDOJV1FGWVT4EV0FMM1DYQ4OYK5I12BOH">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDMFB03YXNEQMHBHNLSBKLUMC3WEGEAMZWHM0YF5NF4V5P24FK4OMI">Width Constraint (Min=0.254mm) (Max=30mm) (Preferred=2mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDB31BZFMBGVUJEBYIR2FLSBYPMPYWWVCO33PRPDZJ2TPKZGAQ1BE">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDH1HVCPEOSZ3SLQHDYRSNKQFZSLUUEIUPB0OILZBMAAB5BR3JTV1">Hole Size Constraint (Min=0.5mm) (Max=3.2mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDGD1CKSWTYWMCID5A2AKJ2WGQ2MH4TA43AGHF5JPLYLUKH5ALOVWE">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDVNDFZK5VOP3PFZWNMMJVYXRJQE0HT5VXCNDY51CCP05MVU1LYRSL">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDSEPLQNJ3E0SPFYKUTAJWLDKYHSZM2OTOJCTXXECAZEXNJFPVKQD">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</a></td>
+<td class="column2">34</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDSGJ3OCL4G13UBAO4SE4G04EVIJ2KYQAYOMFBSD2CPPNISSM1FHC">Silk to Silk (Clearance=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDMDKQVR4TW0DCIT0ZWIYNMGBMJPIJJJF1JL4JTJL1VBJM4XJWCQ1J">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID55NJ5YBZGVPXEYG4YQYFWBWWRD1VXPNBEIJBSNEMC3DY2YJ4WD5">Height Constraint (Min=0mm) (Max=70mm) (Prefered=25mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">34</td>
+</tr>
+</table><br><a name="IDSEPLQNJ3E0SPFYKUTAJWLDKYHSZM2OTOJCTXXECAZEXNJFPVKQD"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6502.249mil|Location2.X=6513.499mil|Location1.Y=2158.45mil|Location2.Y=2169.7mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6502.249mil|Location2.X=6513.499mil|Location1.Y=2158.45mil|Location2.Y=2169.7mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.245mm &lt; 0.254mm) Between Arc (137.7mm,24.595mm) on Top Overlay And Pad D5-1(137.7mm,26.09mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.245mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6781.777mil|Location2.X=6793.027mil|Location1.Y=2499.395mil|Location2.Y=2510.645mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6781.777mil|Location2.X=6793.027mil|Location1.Y=2499.395mil|Location2.Y=2510.645mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.245mm &lt; 0.254mm) Between Arc (144.8mm,34mm) on Top Overlay And Pad D4-1(144.8mm,32.505mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.245mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5610.158mil|Location2.X=5621.408mil|Location1.Y=2353.288mil|Location2.Y=2364.538mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5610.158mil|Location2.X=5621.408mil|Location1.Y=2353.288mil|Location2.Y=2364.538mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad C11-1(115.92mm,29.164mm) on Top Layer And Track (115.041mm,30.116mm)(115.041mm,30.964mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5679.379mil|Location2.X=5690.629mil|Location1.Y=2353.288mil|Location2.Y=2364.538mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5679.379mil|Location2.X=5690.629mil|Location1.Y=2353.288mil|Location2.Y=2364.538mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad C11-1(115.92mm,29.164mm) on Top Layer And Track (116.799mm,30.116mm)(116.799mm,30.964mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5610.158mil|Location2.X=5621.408mil|Location1.Y=2402.391mil|Location2.Y=2413.641mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5610.158mil|Location2.X=5621.408mil|Location1.Y=2402.391mil|Location2.Y=2413.641mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad C11-2(115.92mm,31.916mm) on Top Layer And Track (115.041mm,30.116mm)(115.041mm,30.964mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5679.379mil|Location2.X=5690.629mil|Location1.Y=2402.391mil|Location2.Y=2413.641mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5679.379mil|Location2.X=5690.629mil|Location1.Y=2402.391mil|Location2.Y=2413.641mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad C11-2(115.92mm,31.916mm) on Top Layer And Track (116.799mm,30.116mm)(116.799mm,30.964mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5744.016mil|Location2.X=5755.266mil|Location1.Y=2137.037mil|Location2.Y=2148.287mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5744.016mil|Location2.X=5755.266mil|Location1.Y=2137.037mil|Location2.Y=2148.287mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad C13-1(119.32mm,25.176mm) on Top Layer And Track (118.441mm,23.376mm)(118.441mm,24.224mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5813.238mil|Location2.X=5824.488mil|Location1.Y=2137.037mil|Location2.Y=2148.287mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5813.238mil|Location2.X=5824.488mil|Location1.Y=2137.037mil|Location2.Y=2148.287mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad C13-1(119.32mm,25.176mm) on Top Layer And Track (120.199mm,23.376mm)(120.199mm,24.224mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5744.016mil|Location2.X=5755.266mil|Location1.Y=2087.934mil|Location2.Y=2099.184mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5744.016mil|Location2.X=5755.266mil|Location1.Y=2087.934mil|Location2.Y=2099.184mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad C13-2(119.32mm,22.424mm) on Top Layer And Track (118.441mm,23.376mm)(118.441mm,24.224mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5813.238mil|Location2.X=5824.488mil|Location1.Y=2087.934mil|Location2.Y=2099.184mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5813.238mil|Location2.X=5824.488mil|Location1.Y=2087.934mil|Location2.Y=2099.184mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad C13-2(119.32mm,22.424mm) on Top Layer And Track (120.199mm,23.376mm)(120.199mm,24.224mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6353.072mil|Location2.X=6364.322mil|Location1.Y=1895.698mil|Location2.Y=1906.948mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6353.072mil|Location2.X=6364.322mil|Location1.Y=1895.698mil|Location2.Y=1906.948mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad C14-1(134.79mm,19.046mm) on Top Layer And Track (133.911mm,17.246mm)(133.911mm,18.094mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6422.293mil|Location2.X=6433.543mil|Location1.Y=1895.698mil|Location2.Y=1906.948mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6422.293mil|Location2.X=6433.543mil|Location1.Y=1895.698mil|Location2.Y=1906.948mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad C14-1(134.79mm,19.046mm) on Top Layer And Track (135.669mm,17.246mm)(135.669mm,18.094mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6353.072mil|Location2.X=6364.322mil|Location1.Y=1846.595mil|Location2.Y=1857.845mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6353.072mil|Location2.X=6364.322mil|Location1.Y=1846.595mil|Location2.Y=1857.845mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad C14-2(134.79mm,16.294mm) on Top Layer And Track (133.911mm,17.246mm)(133.911mm,18.094mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6422.293mil|Location2.X=6433.543mil|Location1.Y=1846.595mil|Location2.Y=1857.845mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6422.293mil|Location2.X=6433.543mil|Location1.Y=1846.595mil|Location2.Y=1857.845mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad C14-2(134.79mm,16.294mm) on Top Layer And Track (135.669mm,17.246mm)(135.669mm,18.094mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6474.725mil|Location2.X=6485.975mil|Location1.Y=1895.698mil|Location2.Y=1906.948mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6474.725mil|Location2.X=6485.975mil|Location1.Y=1895.698mil|Location2.Y=1906.948mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad C15-1(137.88mm,19.046mm) on Top Layer And Track (137.001mm,17.246mm)(137.001mm,18.094mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6543.946mil|Location2.X=6555.196mil|Location1.Y=1895.698mil|Location2.Y=1906.948mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6543.946mil|Location2.X=6555.196mil|Location1.Y=1895.698mil|Location2.Y=1906.948mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad C15-1(137.88mm,19.046mm) on Top Layer And Track (138.759mm,17.246mm)(138.759mm,18.094mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6474.725mil|Location2.X=6485.975mil|Location1.Y=1846.595mil|Location2.Y=1857.845mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6474.725mil|Location2.X=6485.975mil|Location1.Y=1846.595mil|Location2.Y=1857.845mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad C15-2(137.88mm,16.294mm) on Top Layer And Track (137.001mm,17.246mm)(137.001mm,18.094mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6543.946mil|Location2.X=6555.196mil|Location1.Y=1846.595mil|Location2.Y=1857.845mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6543.946mil|Location2.X=6555.196mil|Location1.Y=1846.595mil|Location2.Y=1857.845mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad C15-2(137.88mm,16.294mm) on Top Layer And Track (138.759mm,17.246mm)(138.759mm,18.094mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5620.12mil|Location2.X=5631.37mil|Location1.Y=2077.921mil|Location2.Y=2089.171mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5620.12mil|Location2.X=5631.37mil|Location1.Y=2077.921mil|Location2.Y=2089.171mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad R1-1(116.15mm,22.293mm) on Top Layer And Track (115.294mm,23.122mm)(115.294mm,24.318mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5687.527mil|Location2.X=5698.777mil|Location1.Y=2077.921mil|Location2.Y=2089.171mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5687.527mil|Location2.X=5698.777mil|Location1.Y=2077.921mil|Location2.Y=2089.171mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad R1-1(116.15mm,22.293mm) on Top Layer And Track (117.006mm,23.122mm)(117.006mm,24.318mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5620.12mil|Location2.X=5631.37mil|Location1.Y=2140.75mil|Location2.Y=2152mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5620.12mil|Location2.X=5631.37mil|Location1.Y=2140.75mil|Location2.Y=2152mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad R1-2(116.15mm,25.147mm) on Top Layer And Track (115.294mm,23.122mm)(115.294mm,24.318mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5687.527mil|Location2.X=5698.777mil|Location1.Y=2140.75mil|Location2.Y=2152mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5687.527mil|Location2.X=5698.777mil|Location1.Y=2140.75mil|Location2.Y=2152mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad R1-2(116.15mm,25.147mm) on Top Layer And Track (117.006mm,23.122mm)(117.006mm,24.318mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1829.88mil|Location2.X=1841.13mil|Location1.Y=3972.637mil|Location2.Y=3983.887mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1829.88mil|Location2.X=1841.13mil|Location1.Y=3972.637mil|Location2.Y=3983.887mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad R2-1(18.393mm,71.904mm) on Top Layer And Track (19.222mm,71.048mm)(20.418mm,71.048mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1829.88mil|Location2.X=1841.13mil|Location1.Y=4040.044mil|Location2.Y=4051.294mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1829.88mil|Location2.X=1841.13mil|Location1.Y=4040.044mil|Location2.Y=4051.294mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad R2-1(18.393mm,71.904mm) on Top Layer And Track (19.222mm,72.76mm)(20.418mm,72.76mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1892.709mil|Location2.X=1903.959mil|Location1.Y=3972.637mil|Location2.Y=3983.887mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1892.709mil|Location2.X=1903.959mil|Location1.Y=3972.637mil|Location2.Y=3983.887mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad R2-2(21.247mm,71.904mm) on Top Layer And Track (19.222mm,71.048mm)(20.418mm,71.048mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1892.709mil|Location2.X=1903.959mil|Location1.Y=4040.044mil|Location2.Y=4051.294mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1892.709mil|Location2.X=1903.959mil|Location1.Y=4040.044mil|Location2.Y=4051.294mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad R2-2(21.247mm,71.904mm) on Top Layer And Track (19.222mm,72.76mm)(20.418mm,72.76mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6447.403mil|Location2.X=6458.653mil|Location1.Y=2597.098mil|Location2.Y=2608.348mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6447.403mil|Location2.X=6458.653mil|Location1.Y=2597.098mil|Location2.Y=2608.348mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad ROFF-1(137.685mm,35.432mm) on Top Layer And Track (136.307mm,36.309mm)(136.307mm,37.506mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6555.914mil|Location2.X=6567.164mil|Location1.Y=2597.098mil|Location2.Y=2608.348mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6555.914mil|Location2.X=6567.164mil|Location1.Y=2597.098mil|Location2.Y=2608.348mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad ROFF-1(137.685mm,35.432mm) on Top Layer And Track (139.063mm,36.309mm)(139.063mm,37.506mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6447.403mil|Location2.X=6458.653mil|Location1.Y=2659.948mil|Location2.Y=2671.198mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6447.403mil|Location2.X=6458.653mil|Location1.Y=2659.948mil|Location2.Y=2671.198mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad ROFF-2(137.685mm,38.383mm) on Top Layer And Track (136.307mm,36.309mm)(136.307mm,37.506mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6555.914mil|Location2.X=6567.164mil|Location1.Y=2659.948mil|Location2.Y=2671.198mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6555.914mil|Location2.X=6567.164mil|Location1.Y=2659.948mil|Location2.Y=2671.198mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad ROFF-2(137.685mm,38.383mm) on Top Layer And Track (139.063mm,36.309mm)(139.063mm,37.506mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6735.001mil|Location2.X=6746.251mil|Location1.Y=2597.098mil|Location2.Y=2608.348mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6735.001mil|Location2.X=6746.251mil|Location1.Y=2597.098mil|Location2.Y=2608.348mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad RON-1(144.99mm,35.432mm) on Top Layer And Track (143.612mm,36.309mm)(143.612mm,37.506mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6843.513mil|Location2.X=6854.763mil|Location1.Y=2597.098mil|Location2.Y=2608.348mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6843.513mil|Location2.X=6854.763mil|Location1.Y=2597.098mil|Location2.Y=2608.348mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad RON-1(144.99mm,35.432mm) on Top Layer And Track (146.368mm,36.309mm)(146.368mm,37.506mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6735.001mil|Location2.X=6746.251mil|Location1.Y=2659.948mil|Location2.Y=2671.198mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6735.001mil|Location2.X=6746.251mil|Location1.Y=2659.948mil|Location2.Y=2671.198mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad RON-2(144.99mm,38.383mm) on Top Layer And Track (143.612mm,36.309mm)(143.612mm,37.506mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6843.513mil|Location2.X=6854.763mil|Location1.Y=2659.948mil|Location2.Y=2671.198mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6843.513mil|Location2.X=6854.763mil|Location1.Y=2659.948mil|Location2.Y=2671.198mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad RON-2(144.99mm,38.383mm) on Top Layer And Track (146.368mm,36.309mm)(146.368mm,37.506mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

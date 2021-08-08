@@ -1,0 +1,7 @@
+Removed Pin From Net: NetName=GND Pin=P3-5
+Added Pin To Net: NetName=GND Pin=P3-6
+Added Pin To Net: NetName=NetP3_5 Pin=P3-5
+Added Pin To Net: NetName=NetP3_5 Pin=R2-1
+Added Pin To Net: NetName=NetP3_5 Pin=U4-6
+Added Net: Name=NetP3_5
+Added Room: Name=Sheet-QBOOST-v0.2

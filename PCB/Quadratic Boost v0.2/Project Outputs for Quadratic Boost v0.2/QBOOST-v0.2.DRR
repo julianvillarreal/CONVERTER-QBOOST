@@ -1,0 +1,28 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: QBOOST-v0.2.PcbDoc   12/08/2020  9:05:52 p. m.
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : QBOOST-v0.2.TXT
+EIA File   : QBOOST-v0.2.DRL
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      22mil (0.55mm)                                            Round             45        PTH        0.00inch (0.00mm)
+T2      26mil (0.65mm)                                            Round             2         PTH        0.00inch (0.00mm)
+T3      28mil (0.7mm)                                             Round             2         PTH        0.00inch (0.00mm)
+T4      28mil (0.711mm)                                           Round             5         PTH        0.00inch (0.00mm)
+T5      35mil (0.9mm)                                             Round             2         PTH        0.00inch (0.00mm)
+T6      40mil (1.02mm)                                            Round             6         PTH        0.00inch (0.00mm)
+T7      43mil (1.1mm)                                             Round             14        PTH        0.00inch (0.00mm)
+T8      52mil (1.32mm)                                            Round             6         PTH        0.00inch (0.00mm)
+T9      55mil (1.4mm)                                             Round             2         PTH        0.00inch (0.00mm)
+T10     63mil (1.6mm)                                             Round             10        PTH        0.00inch (0.00mm)
+T11     71mil (1.8mm)                                             Round             3         PTH        0.00inch (0.00mm)
+T12     87mil (2.2mm)                                             Round             6         PTH        0.00inch (0.00mm)
+T13     96mil (2.45mm)                                            Round             4         PTH        0.00inch (0.00mm)
+T14     125mil (3.175mm)                                          Round             6         PTH        0.00inch (0.00mm)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              113
+
+Total Processing Time (hh:mm:ss) : 00:00:00

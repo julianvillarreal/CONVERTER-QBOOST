@@ -1,0 +1,5 @@
+DRC Rules Export File for PCB: C:\Users\Julian\OneDrive - Pontificia Universidad Javeriana\10 semestre\PG2\PCB QBOOST\PCB 1 - Convertidor DC-DC\Quadratic Boost V0.2\Quadratic Boost v0.2\QBOOST-v0.2.PcbDoc
+RuleKind=SolderMaskExpansion|RuleName=SolderMaskExpansion|Scope=Board|Minimum=4.00
+RuleKind=Width|RuleName=Width|Scope=Board|Minimum=10.00
+RuleKind=Clearance|RuleName=Clearance|Scope=Board|Minimum=19.69
+RuleKind=ShortCircuit|RuleName=ShortCircuit|Scope=Board|Allowed=0
