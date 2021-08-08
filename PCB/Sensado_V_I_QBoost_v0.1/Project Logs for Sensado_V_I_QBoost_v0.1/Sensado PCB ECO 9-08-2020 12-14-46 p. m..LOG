@@ -1,0 +1,4 @@
+Change Component Designator: OldDesignator=RD1 NewDesignator=R15
+Change Component Designator: OldDesignator=RD2 NewDesignator=R16
+Added Member To Class: ClassName=Sensado Member=Component P3 22-23-2061
+Added Room: Name=Sensado
